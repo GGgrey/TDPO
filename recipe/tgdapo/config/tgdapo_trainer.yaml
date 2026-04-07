@@ -1,0 +1,26 @@
+hydra:
+  searchpath:
+    - file://verl/trainer/config
+
+defaults:
+  - ppo_trainer
+  - _self_
+
+trainer:
+  project_name: verl-tgdapo
+
+algorithm:
+  parse_max_retries: 10
+
+client:
+  mode: api
+  local_path: models/Qwen/Qwen2.5-1.5B
+  api_key: sk-ae06b64c707d4e0d902a57b0b5b49956
+  base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+  client_model: qwen3-max
+  call_max_retries: 100
+  sleep_time: 10.0
+  temperature: 0.3
+  top_p: 0.95
+  max_tokens: 960
+  seed: 42
