@@ -7,7 +7,7 @@ defaults:
   - _self_
 
 trainer:
-  project_name: verl-tgdapo
+  project_name: verl-tdpo
 
 algorithm:
   parse_max_retries: 10

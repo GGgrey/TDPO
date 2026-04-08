@@ -1,9 +1,9 @@
 set -x
 
-export RAY_TMPDIR="/root/tmp/"
+export RAY_TMPDIR="/root/siton-tmp/"
 export WANDB_API_KEY=37f371d2968f35d69749ee52089583eb8e1f0cab
 export WANDB_DIR="/root/siton-data-0072803f053947c8bb3fe64d115b30e3/verl_exp/"
-export WANDB_MODE=online
+export WANDB_MODE=offline
 export ACCELERATE_LOG_LEVEL=info
 export HYDRA_FULL_ERROR=1
 export CUDA_VISIBLE_DEVICES="0,1,2,3"
@@ -48,8 +48,8 @@ n_resp_per_prompt=8
 critic_warmup=0
 val_before_train=False
 n_gpus_per_node=4
-project_name="TGDAPO"
-exp_name="TGDAPO-Qwen2.5-1.5B"
+project_name="TDPO"
+exp_name="TDPO-Qwen2.5-1.5B"
 save_freq=30
 test_freq=10
 total_epochs=1
@@ -74,7 +74,7 @@ top_p=1.0
 top_k=-1  # 0 for HF rollout, -1 for vLLM rollout
 val_top_p=0.7
 
-PYTHONUNBUFFERED=1 python3 -m recipe.tgdapo.main_tgdapo \
+PYTHONUNBUFFERED=1 python3 -m recipe.tdpo.main_tdpo \
     data.train_files="${TRAIN_FILE}" \
     data.val_files="${TEST_FILE}" \
     data.train_batch_size=${train_prompt_bsz} \

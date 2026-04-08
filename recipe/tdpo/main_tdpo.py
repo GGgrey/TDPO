@@ -31,10 +31,10 @@ from verl.utils.config import validate_config
 from verl.utils.device import is_cuda_available
 from verl.utils.import_utils import load_extern_type
 
-from .tgdapo_ray_trainer import RayTGDAPOTrainer
+from .tdpo_ray_trainer import RayTDPOTrainer
 
 
-@hydra.main(config_path="config", config_name="tgdapo_trainer", version_base=None)
+@hydra.main(config_path="config", config_name="tdpo_trainer", version_base=None)
 def main(config):
     """Main entry point for PPO training with Hydra configuration management.
 
@@ -319,8 +319,8 @@ class TaskRunner:
         )
         train_sampler = create_rl_sampler(config.data, train_dataset)
 
-        # Initialize the TGDAPO trainer
-        trainer = RayTGDAPOTrainer(
+        # Initialize the TDPO trainer
+        trainer = RayTDPOTrainer(
             config=config,
             tokenizer=tokenizer,
             processor=processor,

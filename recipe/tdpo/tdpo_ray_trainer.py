@@ -53,7 +53,7 @@ import verl.utils.torch_functional as verl_F
 from verl.utils.dataset.rl_dataset import collate_fn
 
 
-class RayTGDAPOTrainer(RayPPOTrainer):
+class RayTDPOTrainer(RayPPOTrainer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         data_cfg = getattr(self.config, "data", {})
@@ -702,7 +702,7 @@ class RayTGDAPOTrainer(RayPPOTrainer):
                             batch = batch.union(reward_tensor)
                         
                         reward_tensor, reward_extra_infos_dict = compute_reward(batch, self.reward_fn)
-
+                    breakpoint()
                     if not self.use_rm:
                         with marked_timer("adjust_difficulty", timing_raw):
                             batch.batch["reward_tensor"] = reward_tensor
